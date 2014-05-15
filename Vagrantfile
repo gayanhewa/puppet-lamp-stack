@@ -13,5 +13,9 @@ Vagrant.configure("2") do |config|
   # Forward guest port 80 to host port 8888 and name mapping
   config.vm.network "private_network", ip: "192.168.50.4"
 
-  config.vm.synced_folder "/home/gayan/Workspace/webroot/", "/vagrant/webroot/", :owner => "www-data"
+  config.vm.synced_folder "/home/gayan/Workspace/webroot/", "/vagrant/webroot",
+    id: "vagrant-root",
+    owner: "vagrant",
+    group: "www-data",
+    mount_options: ["dmode=777,fmode=664"]
 end
